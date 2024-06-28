@@ -7,7 +7,7 @@ package base
 import (
 	"flag"
 	"fmt"
-	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/quoted"
 	"runtime"
 	"strings"

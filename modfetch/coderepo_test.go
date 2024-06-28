@@ -10,7 +10,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"flag"
-	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/modfetch/codehost"
 	"github.com/inovacc/module/vcweb/vcstest"
 	"hash"

@@ -10,7 +10,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/str"
 	"log"
 	"os"

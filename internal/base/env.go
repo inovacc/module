@@ -6,7 +6,7 @@ package base
 
 import (
 	"fmt"
-	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/internal/cfg"
 	"os"
 	"path/filepath"
 	"runtime"

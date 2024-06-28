@@ -11,7 +11,7 @@ import (
 	"context"
 	"crypto/sha256"
 	"fmt"
-	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/lockedfile"
 	"github.com/inovacc/module/str"
 	"io"

@@ -9,7 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/inovacc/module/base"
-	"github.com/inovacc/module/internal/lazyregexp"
+	"github.com/inovacc/module/lazyregexp"
 	"github.com/inovacc/module/lockedfile"
 	"github.com/inovacc/module/par"
 	"github.com/inovacc/module/str"

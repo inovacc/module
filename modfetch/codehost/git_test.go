@@ -9,7 +9,7 @@ import (
 	"bytes"
 	"context"
 	"flag"
-	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/vcweb/vcstest"
 	"io"
 	"io/fs"

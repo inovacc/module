@@ -8,7 +8,7 @@ package scripttest
 import (
 	"bufio"
 	"errors"
-	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/script"
 	"io"
 	"strings"

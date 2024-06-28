@@ -7,10 +7,11 @@ package modfetch
 import (
 	"context"
 	"fmt"
-	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/internal/cfg"
+	"github.com/inovacc/module/internal/web"
 	"github.com/inovacc/module/modfetch/codehost"
 	"github.com/inovacc/module/par"
-	"github.com/inovacc/module/web"
+	"github.com/inovacc/module/vcs"
 	"io"
 	"io/fs"
 	"os"

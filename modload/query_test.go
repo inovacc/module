@@ -7,7 +7,7 @@ package modload
 import (
 	"context"
 	"flag"
-	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/vcweb/vcstest"
 	"internal/testenv"
 	"log"

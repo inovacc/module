@@ -22,7 +22,7 @@ import (
 	"encoding/hex"
 	"flag"
 	"fmt"
-	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/modfetch"
 	"github.com/inovacc/module/modload"
 	"io"

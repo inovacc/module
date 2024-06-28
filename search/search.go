@@ -7,8 +7,8 @@ package search
 import (
 	"fmt"
 	"github.com/inovacc/module/base"
-	"github.com/inovacc/module/cfg"
 	"github.com/inovacc/module/fsys"
+	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/pkgpattern"
 	"github.com/inovacc/module/str"
 	"go/build"
