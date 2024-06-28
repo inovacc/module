@@ -12,7 +12,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/internal/base"
 	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/internal/web"
 	"github.com/inovacc/module/lockedfile"

@@ -6,7 +6,7 @@ package script
 
 import (
 	"fmt"
-	"github.com/inovacc/module/imports"
+	"github.com/inovacc/module/internal/imports"
 	"os"
 	"runtime"
 	"sync"

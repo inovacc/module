@@ -5,7 +5,7 @@
 package vcweb_test
 
 import (
-	"github.com/inovacc/module/vcweb"
+	"github.com/inovacc/module/internal/vcweb"
 	"io"
 	"log"
 	"net/http"

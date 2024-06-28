@@ -11,7 +11,7 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/internal/base"
 	"github.com/inovacc/module/internal/web"
 	"github.com/inovacc/module/lockedfile"
 	"github.com/inovacc/module/par"

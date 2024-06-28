@@ -7,7 +7,7 @@ package modload
 import (
 	"context"
 	"errors"
-	"github.com/inovacc/module/gover"
+	"github.com/inovacc/module/internal/gover"
 	"github.com/inovacc/module/modfetch"
 	"github.com/inovacc/module/modfetch/codehost"
 	"os"

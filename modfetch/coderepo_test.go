@@ -12,7 +12,6 @@ import (
 	"flag"
 	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/modfetch/codehost"
-	"github.com/inovacc/module/vcweb/vcstest"
 	"hash"
 	"internal/testenv"
 	"io"

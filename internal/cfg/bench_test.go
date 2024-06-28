@@ -5,6 +5,7 @@
 package cfg
 
 import (
+	"github.com/inovacc/module/internal/testenv"
 	"testing"
 )
 

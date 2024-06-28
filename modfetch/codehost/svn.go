@@ -9,7 +9,7 @@ import (
 	"context"
 	"encoding/xml"
 	"fmt"
-	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/internal/base"
 	"io"
 	"os"
 	"path"

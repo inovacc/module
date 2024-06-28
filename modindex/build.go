@@ -12,6 +12,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/inovacc/module/fsys"
+
 	"github.com/inovacc/module/str"
 	"go/ast"
 	"go/build"

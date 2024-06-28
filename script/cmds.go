@@ -7,6 +7,9 @@ package script
 import (
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/diff"
+	"github.com/inovacc/module/internal/cfg"
+	"github.com/inovacc/module/robustio"
 	"io/fs"
 	"os"
 	"os/exec"

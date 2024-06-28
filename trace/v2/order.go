@@ -6,6 +6,8 @@ package trace
 
 import (
 	"fmt"
+	"github.com/inovacc/module/trace/v2/event"
+	"github.com/inovacc/module/trace/v2/event/go122"
 	"github.com/inovacc/module/trace/v2/version"
 	"strings"
 )

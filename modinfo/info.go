@@ -6,6 +6,7 @@ package modinfo
 
 import (
 	"encoding/json"
+	"github.com/inovacc/module/modfetch/codehost"
 	"time"
 )
 

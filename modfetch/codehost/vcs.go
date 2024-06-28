@@ -8,7 +8,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/internal/base"
 	"github.com/inovacc/module/lazyregexp"
 	"github.com/inovacc/module/lockedfile"
 	"github.com/inovacc/module/par"

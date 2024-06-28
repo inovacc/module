@@ -34,7 +34,7 @@ func local() (goVers, toolVers string) {
 	goVers = FromToolchain(toolVers)
 	if goVers == "" {
 		// Development branch. Use "Dev" version with just 1.N, no rc1 or .0 suffix.
-		goVers = "1." + strconv.Itoa(goversion.Version)
+		goVers = "1." + strconv.Itoa(22)
 		toolVers = "go" + goVers
 	}
 	return goVers, toolVers

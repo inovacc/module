@@ -7,8 +7,8 @@ package modload
 import (
 	"errors"
 	"fmt"
-	"github.com/inovacc/module/base"
-	"github.com/inovacc/module/gover"
+	"github.com/inovacc/module/internal/base"
+	"github.com/inovacc/module/internal/gover"
 	"io/fs"
 	"os"
 	"path/filepath"

@@ -5,6 +5,8 @@
 package godebugs_test
 
 import (
+	"github.com/inovacc/module/godebugs"
+	"github.com/inovacc/module/internal/testenv"
 	"os"
 	"runtime"
 	"strings"

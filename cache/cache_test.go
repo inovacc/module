@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
+	"github.com/inovacc/module/internal/testenv"
 	"os"
 	"path/filepath"
 	"testing"

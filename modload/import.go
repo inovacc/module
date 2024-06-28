@@ -9,7 +9,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/inovacc/module/fsys"
-	"github.com/inovacc/module/gover"
+	"github.com/inovacc/module/internal/gover"
+
 	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/modfetch"
 	"github.com/inovacc/module/modindex"

@@ -11,7 +11,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/inovacc/module/script"
-	"internal/txtar"
+	"golang.org/x/tools/txtar"
 	"io"
 	"log"
 	"net/http"

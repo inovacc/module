@@ -10,6 +10,8 @@ import (
 	"cmp"
 	"encoding/binary"
 	"fmt"
+	"github.com/inovacc/module/trace/v2/event"
+	"github.com/inovacc/module/trace/v2/event/go122"
 	"io"
 	"slices"
 	"strings"

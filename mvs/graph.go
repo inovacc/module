@@ -6,7 +6,7 @@ package mvs
 
 import (
 	"fmt"
-	"github.com/inovacc/module/gover"
+	"github.com/inovacc/module/internal/gover"
 	"slices"
 
 	"golang.org/x/mod/module"

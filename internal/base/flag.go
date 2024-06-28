@@ -8,6 +8,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/inovacc/module/fsys"
+
 	"github.com/inovacc/module/internal/cfg"
 	"github.com/inovacc/module/quoted"
 )

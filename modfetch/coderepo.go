@@ -10,7 +10,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/inovacc/module/gover"
+	"github.com/inovacc/module/internal/gover"
 	"github.com/inovacc/module/modfetch/codehost"
 	"io"
 	"io/fs"
