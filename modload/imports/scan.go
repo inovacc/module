@@ -7,7 +7,6 @@ package imports
 import (
 	"fmt"
 	"github.com/inovacc/module/fsys"
-
 	"io/fs"
 	"path/filepath"
 	"sort"

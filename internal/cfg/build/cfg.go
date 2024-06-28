@@ -9,7 +9,7 @@
 // Note that it does NOT provide access to the build configuration used to
 // build the currently-running binary. For that, use runtime.GOOS etc
 // as well as internal/goexperiment.
-package buildcfg
+package build
 
 import (
 	"fmt"

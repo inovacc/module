@@ -10,9 +10,10 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/inovacc/module/buildcfg"
 	"github.com/inovacc/module/fsys"
 	"go/build"
+	"internal/buildcfg"
+	"internal/cfg"
 	"io"
 	"os"
 	"path/filepath"
@@ -23,8 +24,8 @@ import (
 
 // Global build parameters (used during package load)
 var (
-	Goos   = envOr("GOOS", os.Getenv("GOOS"))
-	Goarch = envOr("GOARCH", os.Getenv("GOARCH"))
+	Goos   = envOr("GOOS", build.Default.GOOS)
+	Goarch = envOr("GOARCH", build.Default.GOARCH)
 
 	ExeSuffix = exeSuffix()
 
@@ -389,7 +390,7 @@ func CanGetenv(key string) bool {
 		// Assume anything in the user file or go.env file is valid.
 		return true
 	}
-	return strings.Contains(KnownEnv, "\t"+key+"\n")
+	return strings.Contains(cfg.KnownEnv, "\t"+key+"\n")
 }
 
 var (

@@ -7,6 +7,7 @@ package fsys
 import (
 	"encoding/json"
 	"errors"
+	"github.com/inovacc/module/internal/testenv"
 	"golang.org/x/tools/txtar"
 	"io"
 	"io/fs"

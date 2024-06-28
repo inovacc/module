@@ -99,10 +99,10 @@ import (
 	"fmt"
 	"github.com/inovacc/module/fsys"
 	"github.com/inovacc/module/internal/gover"
+	"github.com/inovacc/module/modload/imports"
 
 	"github.com/inovacc/module/internal/base"
 	"github.com/inovacc/module/internal/cfg"
-	"github.com/inovacc/module/internal/imports"
 	"github.com/inovacc/module/modfetch"
 	"github.com/inovacc/module/modindex"
 	"github.com/inovacc/module/mvs"

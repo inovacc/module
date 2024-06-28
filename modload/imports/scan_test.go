@@ -6,6 +6,7 @@ package imports
 
 import (
 	"bytes"
+	"github.com/inovacc/module/internal/testenv"
 	"os"
 	"path"
 	"path/filepath"

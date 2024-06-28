@@ -3,9 +3,8 @@
 package cfg
 
 const DefaultPkgConfig = `pkg-config`
-
 func DefaultCC(goos, goarch string) string {
-	switch goos + `/` + goarch {
+	switch goos+`/`+goarch {
 	}
 	switch goos {
 	case "darwin", "ios", "freebsd", "openbsd":
@@ -14,7 +13,7 @@ func DefaultCC(goos, goarch string) string {
 	return "gcc"
 }
 func DefaultCXX(goos, goarch string) string {
-	switch goos + `/` + goarch {
+	switch goos+`/`+goarch {
 	}
 	switch goos {
 	case "darwin", "ios", "freebsd", "openbsd":
