@@ -14,7 +14,7 @@ import (
 	"github.com/inovacc/module/cfg"
 	"github.com/inovacc/module/fsys"
 	"github.com/inovacc/module/gover"
-	"github.com/inovacc/module/lazyregexp"
+	"github.com/inovacc/module/internal/lazyregexp"
 	"github.com/inovacc/module/lockedfile"
 	"github.com/inovacc/module/modfetch"
 	"github.com/inovacc/module/search"

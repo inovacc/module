@@ -11,7 +11,7 @@ import (
 	"bytes"
 	"compress/gzip"
 	"fmt"
-	"github.com/inovacc/module/lazyregexp"
+	"github.com/inovacc/module/internal/lazyregexp"
 	"io"
 	"strings"
 	"time"

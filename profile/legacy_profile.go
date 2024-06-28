@@ -11,7 +11,7 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
-	"github.com/inovacc/module/lazyregexp"
+	"github.com/inovacc/module/internal/lazyregexp"
 	"io"
 	"math"
 	"strconv"
