@@ -7,12 +7,12 @@
 package vcstest
 
 import (
-	"cfg/vcweb"
-	"cfg/web"
 	"crypto/tls"
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
+	"github.com/inovacc/module/vcweb"
+	"github.com/inovacc/module/web"
 	"io"
 	"log"
 	"net/http"

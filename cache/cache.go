@@ -7,13 +7,13 @@ package cache
 
 import (
 	"bytes"
-	"cfg/godebug"
-	"cfg/lockedfile"
-	"cfg/mmap"
 	"crypto/sha256"
 	"encoding/hex"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/godebug"
+	"github.com/inovacc/module/lockedfile"
+	"github.com/inovacc/module/mmap"
 	"io"
 	"io/fs"
 	"os"

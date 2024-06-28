@@ -10,12 +10,12 @@ package modfetch
 
 import (
 	"bytes"
-	"cfg/base"
-	"cfg/cfg"
-	"cfg/lockedfile"
-	"cfg/web"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/lockedfile"
+	"github.com/inovacc/module/web"
 	"io"
 	"io/fs"
 	"net/url"

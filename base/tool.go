@@ -5,9 +5,9 @@
 package base
 
 import (
-	"cfg/cfg"
-	"cfg/par"
 	"fmt"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/par"
 	"go/build"
 	"os"
 	"path/filepath"

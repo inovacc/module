@@ -5,8 +5,8 @@
 package base
 
 import (
-	"cfg/cfg"
 	"fmt"
+	"github.com/inovacc/module/cfg"
 	"os"
 	"path/filepath"
 	"runtime"

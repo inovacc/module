@@ -5,9 +5,9 @@
 package cache
 
 import (
-	"cfg/base"
-	"cfg/cfg"
 	"fmt"
+	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/cfg"
 	"os"
 	"path/filepath"
 	"sync"

@@ -5,10 +5,10 @@
 package modload
 
 import (
-	"cfg/base"
-	"cfg/gover"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/gover"
 	"io/fs"
 	"os"
 	"path/filepath"

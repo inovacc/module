@@ -5,8 +5,8 @@
 package raw
 
 import (
-	"cfg/trace/v2/event"
-	"cfg/trace/v2/version"
+	"github.com/inovacc/module/trace/v2/event"
+	"github.com/inovacc/module/trace/v2/version"
 	"strconv"
 	"strings"
 )

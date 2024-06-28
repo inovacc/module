@@ -5,10 +5,10 @@
 package traceviewer
 
 import (
-	"cfg/trace"
-	"cfg/trace/traceviewer/format"
 	"encoding/json"
 	"fmt"
+	"github.com/inovacc/module/trace"
+	"github.com/inovacc/module/trace/traceviewer/format"
 	"io"
 	"strconv"
 	"time"

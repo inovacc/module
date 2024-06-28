@@ -6,10 +6,10 @@ package raw
 
 import (
 	"bufio"
-	"cfg/trace/v2/event"
-	"cfg/trace/v2/version"
 	"encoding/binary"
 	"fmt"
+	"github.com/inovacc/module/trace/v2/event"
+	"github.com/inovacc/module/trace/v2/version"
 	"io"
 )
 

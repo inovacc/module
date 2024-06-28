@@ -9,10 +9,10 @@ package modindex
 
 import (
 	"bytes"
-	"cfg/fsys"
-	"cfg/str"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/fsys"
+	"github.com/inovacc/module/str"
 	"go/ast"
 	"go/build"
 	"go/build/constraint"

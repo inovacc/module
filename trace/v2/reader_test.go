@@ -6,12 +6,12 @@ package trace_test
 
 import (
 	"bytes"
-	"cfg/trace/v2"
-	"cfg/trace/v2/raw"
-	"cfg/trace/v2/testtrace"
-	"cfg/trace/v2/version"
 	"flag"
 	"fmt"
+	"github.com/inovacc/module/trace/v2"
+	"github.com/inovacc/module/trace/v2/raw"
+	"github.com/inovacc/module/trace/v2/testtrace"
+	"github.com/inovacc/module/trace/v2/version"
 	"io"
 	"os"
 	"path/filepath"

@@ -5,9 +5,9 @@
 package testtrace
 
 import (
-	"cfg/trace/v2"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/trace/v2"
 	"slices"
 	"strings"
 )

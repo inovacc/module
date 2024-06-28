@@ -5,10 +5,10 @@
 package base
 
 import (
-	"cfg/cfg"
-	"cfg/quoted"
 	"flag"
 	"fmt"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/quoted"
 	"runtime"
 	"strings"
 )

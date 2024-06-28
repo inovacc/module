@@ -6,13 +6,13 @@ package modfetch
 
 import (
 	"archive/zip"
-	"cfg/cfg"
-	"cfg/modfetch/codehost"
-	"cfg/vcweb/vcstest"
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
 	"flag"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/modfetch/codehost"
+	"github.com/inovacc/module/vcweb/vcstest"
 	"hash"
 	"internal/testenv"
 	"io"

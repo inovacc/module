@@ -7,9 +7,9 @@ package trace_test
 import (
 	"bufio"
 	"bytes"
-	"cfg/trace/v2"
-	"cfg/trace/v2/testtrace"
 	"fmt"
+	"github.com/inovacc/module/trace/v2"
+	"github.com/inovacc/module/trace/v2/testtrace"
 
 	"io"
 	"os"

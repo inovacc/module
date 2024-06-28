@@ -5,10 +5,10 @@
 package vcstest_test
 
 import (
-	"cfg/vcweb"
 	"errors"
 	"flag"
 	"fmt"
+	"github.com/inovacc/module/vcweb"
 	"io"
 	"io/fs"
 	"log"

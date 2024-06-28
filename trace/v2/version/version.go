@@ -5,9 +5,9 @@
 package version
 
 import (
-	"cfg/trace/v2/event"
-	"cfg/trace/v2/event/go122"
 	"fmt"
+	"github.com/inovacc/module/trace/v2/event"
+	"github.com/inovacc/module/trace/v2/event/go122"
 	"io"
 )
 

@@ -7,10 +7,10 @@ package codehost
 import (
 	"archive/zip"
 	"bytes"
-	"cfg/cfg"
-	"cfg/vcweb/vcstest"
 	"context"
 	"flag"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/vcweb/vcstest"
 	"io"
 	"io/fs"
 	"log"

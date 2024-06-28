@@ -5,10 +5,10 @@
 package modfetch
 
 import (
-	"cfg/gover"
-	"cfg/modfetch/codehost"
 	"context"
 	"fmt"
+	"github.com/inovacc/module/gover"
+	"github.com/inovacc/module/modfetch/codehost"
 	"io"
 	"sort"
 	"strings"

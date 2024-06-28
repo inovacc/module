@@ -10,8 +10,8 @@ package profile
 import (
 	"bufio"
 	"bytes"
-	"cfg/lazyregexp"
 	"fmt"
+	"github.com/inovacc/module/lazyregexp"
 	"io"
 	"math"
 	"strconv"

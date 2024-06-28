@@ -5,11 +5,11 @@
 package base
 
 import (
-	"cfg/cfg"
-	"cfg/fsys"
-	"cfg/quoted"
 	"flag"
 	"fmt"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/fsys"
+	"github.com/inovacc/module/quoted"
 )
 
 // A StringsFlag is a command-line flag that interprets its argument

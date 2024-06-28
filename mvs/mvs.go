@@ -7,8 +7,8 @@
 package mvs
 
 import (
-	"cfg/par"
 	"fmt"
+	"github.com/inovacc/module/par"
 	"reflect"
 	"sort"
 	"sync"

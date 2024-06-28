@@ -5,8 +5,8 @@
 package imports
 
 import (
-	"cfg/fsys"
 	"fmt"
+	"github.com/inovacc/module/fsys"
 	"io/fs"
 	"path/filepath"
 	"sort"

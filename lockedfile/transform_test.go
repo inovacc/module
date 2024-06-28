@@ -10,8 +10,8 @@ package lockedfile_test
 
 import (
 	"bytes"
-	"cfg/lockedfile"
 	"encoding/binary"
+	"github.com/inovacc/module/lockedfile"
 	"math/rand"
 	"path/filepath"
 	"testing"

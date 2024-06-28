@@ -7,11 +7,11 @@ package modfetch
 import (
 	"archive/zip"
 	"bytes"
-	"cfg/gover"
-	"cfg/modfetch/codehost"
 	"context"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/gover"
+	"github.com/inovacc/module/modfetch/codehost"
 	"io"
 	"io/fs"
 	"os"

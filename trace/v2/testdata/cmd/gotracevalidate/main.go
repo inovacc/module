@@ -5,10 +5,10 @@
 package main
 
 import (
-	"cfg/trace/v2"
-	"cfg/trace/v2/testtrace"
 	"flag"
 	"fmt"
+	"github.com/inovacc/module/trace/v2"
+	"github.com/inovacc/module/trace/v2/testtrace"
 	"io"
 	"log"
 	"os"

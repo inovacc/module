@@ -5,8 +5,8 @@
 package mvs
 
 import (
-	"cfg/gover"
 	"fmt"
+	"github.com/inovacc/module/gover"
 	"slices"
 
 	"golang.org/x/mod/module"

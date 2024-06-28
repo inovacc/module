@@ -5,8 +5,8 @@
 package raw
 
 import (
-	"cfg/trace/v2/version"
 	"fmt"
+	"github.com/inovacc/module/trace/v2/version"
 	"io"
 )
 

@@ -8,12 +8,12 @@ package codehost
 
 import (
 	"bytes"
-	"cfg/cfg"
-	"cfg/lockedfile"
-	"cfg/str"
 	"context"
 	"crypto/sha256"
 	"fmt"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/lockedfile"
+	"github.com/inovacc/module/str"
 	"io"
 	"io/fs"
 	"os"

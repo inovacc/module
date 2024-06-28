@@ -6,8 +6,8 @@ package trace
 
 import (
 	"bufio"
-	"cfg/trace/v2/version"
 	"fmt"
+	"github.com/inovacc/module/trace/v2/version"
 	"io"
 	"slices"
 	"strings"

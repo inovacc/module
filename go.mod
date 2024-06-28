@@ -1,4 +1,4 @@
-module cfg
+module github.com/inovacc/module
 
 go 1.22
 

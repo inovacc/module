@@ -5,7 +5,7 @@
 package trace
 
 import (
-	tracev2 "cfg/trace/v2"
+	tracev2 "github.com/inovacc/module/trace/v2"
 	"sort"
 	"time"
 )

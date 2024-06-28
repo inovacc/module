@@ -16,15 +16,15 @@
 package zip_sum_test
 
 import (
-	"cfg/cfg"
-	"cfg/modfetch"
-	"cfg/modload"
 	"context"
 	"crypto/sha256"
 	"encoding/csv"
 	"encoding/hex"
 	"flag"
 	"fmt"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/modfetch"
+	"github.com/inovacc/module/modload"
 	"io"
 	"os"
 	"path/filepath"

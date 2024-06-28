@@ -6,7 +6,7 @@ package diff
 
 import (
 	"bytes"
-	"cfg/txtar"
+	"github.com/inovacc/module/txtar"
 	"path/filepath"
 	"testing"
 )

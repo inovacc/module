@@ -5,12 +5,12 @@
 package search
 
 import (
-	"cfg/base"
-	"cfg/cfg"
-	"cfg/fsys"
-	"cfg/pkgpattern"
-	"cfg/str"
 	"fmt"
+	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/fsys"
+	"github.com/inovacc/module/pkgpattern"
+	"github.com/inovacc/module/str"
 	"go/build"
 	"io/fs"
 	"os"

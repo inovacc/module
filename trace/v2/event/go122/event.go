@@ -5,8 +5,8 @@
 package go122
 
 import (
-	"cfg/trace/v2/event"
 	"fmt"
+	"github.com/inovacc/module/trace/v2/event"
 )
 
 const (

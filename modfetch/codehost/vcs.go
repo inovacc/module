@@ -5,14 +5,14 @@
 package codehost
 
 import (
-	"cfg/base"
-	"cfg/lazyregexp"
-	"cfg/lockedfile"
-	"cfg/par"
-	"cfg/str"
 	"context"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/lazyregexp"
+	"github.com/inovacc/module/lockedfile"
+	"github.com/inovacc/module/par"
+	"github.com/inovacc/module/str"
 	"io"
 	"io/fs"
 	"os"

@@ -4,7 +4,7 @@
 
 package modload
 
-import "cfg/base"
+import "github.com/inovacc/module/base"
 
 var HelpModules = &base.Command{
 	UsageLine: "modules",

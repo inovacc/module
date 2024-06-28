@@ -6,13 +6,13 @@ package testkit
 
 import (
 	"bytes"
-	"cfg/trace/v2"
-	"cfg/trace/v2/event"
-	"cfg/trace/v2/event/go122"
-	"cfg/trace/v2/raw"
-	"cfg/trace/v2/version"
 	"encoding/binary"
 	"fmt"
+	"github.com/inovacc/module/trace/v2"
+	"github.com/inovacc/module/trace/v2/event"
+	"github.com/inovacc/module/trace/v2/event/go122"
+	"github.com/inovacc/module/trace/v2/raw"
+	"github.com/inovacc/module/trace/v2/version"
 	"golang.org/x/tools/txtar"
 	"os"
 	"regexp"

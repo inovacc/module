@@ -7,10 +7,10 @@ package vcweb
 import (
 	"bufio"
 	"bytes"
-	"cfg/script"
 	"context"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/script"
 	"internal/txtar"
 	"io"
 	"log"

@@ -7,8 +7,8 @@
 package filelock_test
 
 import (
-	"cfg/lockedfile/internal/filelock"
 	"fmt"
+	"github.com/inovacc/module/lockedfile/internal/filelock"
 	"os"
 	"path/filepath"
 	"runtime"

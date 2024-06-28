@@ -8,9 +8,9 @@ package traceviewer
 
 import (
 	"bufio"
-	"cfg/profile"
-	"cfg/trace"
 	"fmt"
+	"github.com/inovacc/module/profile"
+	"github.com/inovacc/module/trace"
 	"net/http"
 	"os"
 	"os/exec"

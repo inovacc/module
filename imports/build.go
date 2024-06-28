@@ -20,9 +20,9 @@ package imports
 
 import (
 	"bytes"
-	"cfg/cfg"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/cfg"
 	"go/build/constraint"
 	"strings"
 	"unicode"

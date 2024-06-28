@@ -5,10 +5,10 @@
 package trace
 
 import (
-	"cfg/trace/traceviewer/format"
 	"context"
 	"encoding/json"
 	"errors"
+	"github.com/inovacc/module/trace/traceviewer/format"
 
 	"os"
 	"strings"

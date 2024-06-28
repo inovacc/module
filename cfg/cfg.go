@@ -8,10 +8,10 @@ package cfg
 
 import (
 	"bytes"
-	"cfg/buildcfg"
-	"cfg/fsys"
 	"context"
 	"fmt"
+	"github.com/inovacc/module/buildcfg"
+	"github.com/inovacc/module/fsys"
 	"go/build"
 	"io"
 	"os"

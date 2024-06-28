@@ -7,11 +7,11 @@
 package base
 
 import (
-	"cfg/cfg"
-	"cfg/str"
 	"context"
 	"flag"
 	"fmt"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/str"
 	"log"
 	"os"
 	"os/exec"

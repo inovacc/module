@@ -5,7 +5,7 @@
 package imports
 
 import (
-	"cfg/cfg"
+	"github.com/inovacc/module/cfg"
 	"sync"
 )
 

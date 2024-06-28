@@ -5,8 +5,8 @@
 package trace
 
 import (
-	tracev2 "cfg/trace/v2"
 	"container/heap"
+	tracev2 "github.com/inovacc/module/trace/v2"
 
 	"math"
 	"sort"

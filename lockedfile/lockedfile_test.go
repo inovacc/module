@@ -9,8 +9,8 @@
 package lockedfile_test
 
 import (
-	"cfg/lockedfile"
 	"fmt"
+	"github.com/inovacc/module/lockedfile"
 	"os"
 	"path/filepath"
 	"testing"

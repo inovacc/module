@@ -6,10 +6,10 @@ package codehost
 
 import (
 	"archive/zip"
-	"cfg/base"
 	"context"
 	"encoding/xml"
 	"fmt"
+	"github.com/inovacc/module/base"
 	"io"
 	"os"
 	"path"

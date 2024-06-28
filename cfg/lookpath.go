@@ -5,7 +5,7 @@
 package cfg
 
 import (
-	"cfg/par"
+	"github.com/inovacc/module/par"
 	"os/exec"
 )
 

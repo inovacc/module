@@ -5,9 +5,9 @@
 package fsys
 
 import (
-	"cfg/txtar"
 	"encoding/json"
 	"errors"
+	"github.com/inovacc/module/txtar"
 	"io"
 	"io/fs"
 	"os"

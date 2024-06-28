@@ -5,13 +5,13 @@
 package modload
 
 import (
-	"cfg/cfg"
-	"cfg/gover"
-	"cfg/mvs"
-	"cfg/par"
 	"context"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/gover"
+	"github.com/inovacc/module/mvs"
+	"github.com/inovacc/module/par"
 	"maps"
 	"os"
 	"slices"

@@ -12,12 +12,12 @@
 package web
 
 import (
-	"cfg/base"
-	"cfg/browser"
-	"cfg/cfg"
 	"crypto/tls"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/browser"
+	"github.com/inovacc/module/cfg"
 	"io"
 	"mime"
 	"net"

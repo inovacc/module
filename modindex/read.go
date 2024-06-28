@@ -6,10 +6,10 @@ package modindex
 
 import (
 	"bytes"
-	"cfg/godebug"
 	"encoding/binary"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/godebug"
 	"go/build"
 	"go/build/constraint"
 	"go/token"

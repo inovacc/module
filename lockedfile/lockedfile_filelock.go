@@ -7,7 +7,7 @@
 package lockedfile
 
 import (
-	"cfg/lockedfile/internal/filelock"
+	"github.com/inovacc/module/lockedfile/internal/filelock"
 	"io/fs"
 	"os"
 )

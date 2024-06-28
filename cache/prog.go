@@ -6,14 +6,14 @@ package cache
 
 import (
 	"bufio"
-	"cfg/base"
-	"cfg/quoted"
 	"context"
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/quoted"
 	"io"
 	"log"
 	"os"

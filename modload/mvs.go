@@ -5,11 +5,11 @@
 package modload
 
 import (
-	"cfg/gover"
-	"cfg/modfetch"
-	"cfg/modfetch/codehost"
 	"context"
 	"errors"
+	"github.com/inovacc/module/gover"
+	"github.com/inovacc/module/modfetch"
+	"github.com/inovacc/module/modfetch/codehost"
 	"os"
 	"sort"
 

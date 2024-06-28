@@ -5,10 +5,10 @@
 package modload
 
 import (
-	"cfg/cfg"
-	"cfg/vcweb/vcstest"
 	"context"
 	"flag"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/vcweb/vcstest"
 	"internal/testenv"
 	"log"
 	"os"

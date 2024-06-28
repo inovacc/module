@@ -5,14 +5,14 @@
 package modfetch
 
 import (
-	"cfg/base"
-	"cfg/cfg"
-	"cfg/modfetch/codehost"
-	"cfg/web"
 	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/modfetch/codehost"
+	"github.com/inovacc/module/web"
 	"io"
 	"io/fs"
 	"net/url"

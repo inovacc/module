@@ -5,8 +5,8 @@
 package script
 
 import (
-	"cfg/imports"
 	"fmt"
+	"github.com/inovacc/module/imports"
 	"os"
 	"runtime"
 	"sync"

@@ -5,14 +5,14 @@
 package modload
 
 import (
-	"cfg/base"
-	"cfg/cfg"
-	"cfg/gover"
-	"cfg/mvs"
-	"cfg/par"
 	"context"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/base"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/gover"
+	"github.com/inovacc/module/mvs"
+	"github.com/inovacc/module/par"
 	"os"
 	"reflect"
 	"runtime"

@@ -5,10 +5,10 @@
 package trace
 
 import (
-	"cfg/trace/v2/event"
 	"cmp"
 	"encoding/binary"
 	"fmt"
+	"github.com/inovacc/module/trace/v2/event"
 )
 
 type batchCursor struct {

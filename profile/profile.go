@@ -9,9 +9,9 @@ package profile
 
 import (
 	"bytes"
-	"cfg/lazyregexp"
 	"compress/gzip"
 	"fmt"
+	"github.com/inovacc/module/lazyregexp"
 	"io"
 	"strings"
 	"time"

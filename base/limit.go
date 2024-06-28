@@ -5,8 +5,8 @@
 package base
 
 import (
-	"cfg/godebug"
 	"fmt"
+	"github.com/inovacc/module/godebug"
 	"runtime"
 	"strconv"
 	"sync"

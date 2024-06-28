@@ -7,10 +7,10 @@
 package fsys
 
 import (
-	"cfg/godebug"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/godebug"
 	"io/fs"
 	"log"
 	"os"

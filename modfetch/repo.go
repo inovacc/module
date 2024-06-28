@@ -5,12 +5,12 @@
 package modfetch
 
 import (
-	"cfg/cfg"
-	"cfg/modfetch/codehost"
-	"cfg/par"
-	"cfg/web"
 	"context"
 	"fmt"
+	"github.com/inovacc/module/cfg"
+	"github.com/inovacc/module/modfetch/codehost"
+	"github.com/inovacc/module/par"
+	"github.com/inovacc/module/web"
 	"io"
 	"io/fs"
 	"os"
