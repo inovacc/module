@@ -6,7 +6,9 @@ package testtrace
 
 import (
 	"bytes"
+	"cfg/trace/v2/raw"
 	"fmt"
+	"golang.org/x/tools/txtar"
 	"io"
 )
 

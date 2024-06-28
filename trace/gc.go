@@ -5,6 +5,7 @@
 package trace
 
 import (
+	tracev2 "cfg/trace/v2"
 	"container/heap"
 
 	"math"

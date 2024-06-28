@@ -4,6 +4,8 @@
 
 package modload
 
+import "cfg/base"
+
 var HelpModules = &base.Command{
 	UsageLine: "modules",
 	Short:     "modules, module versions, and more",

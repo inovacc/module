@@ -6,6 +6,8 @@ package raw
 
 import (
 	"bufio"
+	"cfg/trace/v2/event"
+	"cfg/trace/v2/version"
 	"fmt"
 	"io"
 	"strconv"

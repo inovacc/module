@@ -7,6 +7,7 @@
 package lockedfile
 
 import (
+	"cfg/lockedfile/internal/filelock"
 	"io/fs"
 	"os"
 )

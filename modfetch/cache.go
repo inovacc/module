@@ -6,6 +6,13 @@ package modfetch
 
 import (
 	"bytes"
+	"cfg/base"
+	"cfg/cfg"
+	"cfg/gover"
+	"cfg/lockedfile"
+	"cfg/modfetch/codehost"
+	"cfg/par"
+	"cfg/robustio"
 	"context"
 	"encoding/json"
 	"errors"
@@ -18,14 +25,6 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-
-	"cmd/go/internal/base"
-	"cmd/go/internal/cfg"
-	"cmd/go/internal/gover"
-	"cmd/go/internal/lockedfile"
-	"cmd/go/internal/modfetch/codehost"
-	"cmd/go/internal/par"
-	"cmd/go/internal/robustio"
 
 	"golang.org/x/mod/module"
 	"golang.org/x/mod/semver"

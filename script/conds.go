@@ -5,6 +5,7 @@
 package script
 
 import (
+	"cfg/imports"
 	"fmt"
 	"os"
 	"runtime"

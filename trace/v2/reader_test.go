@@ -6,6 +6,10 @@ package trace_test
 
 import (
 	"bytes"
+	"cfg/trace/v2"
+	"cfg/trace/v2/raw"
+	"cfg/trace/v2/testtrace"
+	"cfg/trace/v2/version"
 	"flag"
 	"fmt"
 	"io"

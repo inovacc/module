@@ -6,6 +6,10 @@ package codehost
 
 import (
 	"bytes"
+	"cfg/base"
+	"cfg/lockedfile"
+	"cfg/par"
+	"cfg/web"
 	"context"
 	"crypto/sha256"
 	"encoding/base64"

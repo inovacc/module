@@ -5,6 +5,7 @@
 package imports
 
 import (
+	"cfg/cfg"
 	"sync"
 )
 

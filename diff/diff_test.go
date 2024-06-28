@@ -6,6 +6,7 @@ package diff
 
 import (
 	"bytes"
+	"cfg/txtar"
 	"path/filepath"
 	"testing"
 )

@@ -9,8 +9,8 @@ package modindex
 
 import (
 	"bytes"
-	"cmd/go/internal/fsys"
-	"cmd/go/internal/str"
+	"cfg/fsys"
+	"cfg/str"
 	"errors"
 	"fmt"
 	"go/ast"

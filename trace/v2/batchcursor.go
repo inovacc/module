@@ -5,6 +5,7 @@
 package trace
 
 import (
+	"cfg/trace/v2/event"
 	"cmp"
 	"encoding/binary"
 	"fmt"

@@ -5,6 +5,7 @@
 package go122
 
 import (
+	"cfg/trace/v2/event"
 	"fmt"
 )
 

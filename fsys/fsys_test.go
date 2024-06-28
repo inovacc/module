@@ -5,6 +5,7 @@
 package fsys
 
 import (
+	"cfg/txtar"
 	"encoding/json"
 	"errors"
 	"io"

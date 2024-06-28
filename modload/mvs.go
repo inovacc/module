@@ -5,6 +5,9 @@
 package modload
 
 import (
+	"cfg/gover"
+	"cfg/modfetch"
+	"cfg/modfetch/codehost"
 	"context"
 	"errors"
 	"os"

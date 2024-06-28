@@ -6,6 +6,16 @@ package modload
 
 import (
 	"bytes"
+	"cfg/cfg"
+	"cfg/gover"
+	"cfg/imports"
+	"cfg/modfetch"
+	"cfg/modfetch/codehost"
+	"cfg/modinfo"
+	"cfg/pkgpattern"
+	"cfg/search"
+	"cfg/str"
+	"cfg/trace"
 	"context"
 	"errors"
 	"fmt"

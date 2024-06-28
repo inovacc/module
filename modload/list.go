@@ -6,6 +6,13 @@ package modload
 
 import (
 	"bytes"
+	"cfg/base"
+	"cfg/cfg"
+	"cfg/gover"
+	"cfg/modfetch/codehost"
+	"cfg/modinfo"
+	"cfg/pkgpattern"
+	"cfg/search"
 	"context"
 	"encoding/json"
 	"errors"

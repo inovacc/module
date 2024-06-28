@@ -34,6 +34,8 @@ package godebug
 // meaning it cannot introduce a GODEBUG setting of its own.
 // We keep imports to the absolute bare minimum.
 import (
+	"cfg/bisect"
+	"cfg/godebugs"
 	"sync"
 	"sync/atomic"
 	"unsafe"

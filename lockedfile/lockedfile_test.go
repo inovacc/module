@@ -9,6 +9,7 @@
 package lockedfile_test
 
 import (
+	"cfg/lockedfile"
 	"fmt"
 	"os"
 	"path/filepath"

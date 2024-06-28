@@ -5,6 +5,8 @@
 package raw
 
 import (
+	"cfg/trace/v2/event"
+	"cfg/trace/v2/version"
 	"encoding/binary"
 	"fmt"
 	"io"

@@ -5,6 +5,8 @@
 package modload
 
 import (
+	"cfg/base"
+	"cfg/gover"
 	"errors"
 	"fmt"
 	"io/fs"

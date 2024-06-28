@@ -7,6 +7,8 @@ package codehost
 import (
 	"archive/zip"
 	"bytes"
+	"cfg/cfg"
+	"cfg/vcweb/vcstest"
 	"context"
 	"flag"
 	"io"

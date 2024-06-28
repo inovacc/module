@@ -5,6 +5,8 @@
 package traceviewer
 
 import (
+	"cfg/trace"
+	"cfg/trace/traceviewer/format"
 	"encoding/json"
 	"fmt"
 	"io"

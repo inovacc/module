@@ -5,6 +5,7 @@
 package vcweb_test
 
 import (
+	"cfg/vcweb"
 	"io"
 	"log"
 	"net/http"

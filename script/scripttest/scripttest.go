@@ -7,6 +7,8 @@ package scripttest
 
 import (
 	"bufio"
+	"cfg/cfg"
+	"cfg/script"
 	"errors"
 	"io"
 	"strings"

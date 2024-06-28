@@ -5,14 +5,13 @@
 package modfetch
 
 import (
+	"cfg/gover"
+	"cfg/modfetch/codehost"
 	"context"
 	"fmt"
 	"io"
 	"sort"
 	"strings"
-
-	"cmd/go/internal/gover"
-	"cmd/go/internal/modfetch/codehost"
 )
 
 // A toolchainRepo is a synthesized repository reporting Go toolchain versions.

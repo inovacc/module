@@ -5,6 +5,7 @@
 package base
 
 import (
+	"cfg/cfg"
 	"fmt"
 	"os"
 	"path/filepath"

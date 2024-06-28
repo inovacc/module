@@ -5,6 +5,11 @@
 package codehost
 
 import (
+	"cfg/base"
+	"cfg/lazyregexp"
+	"cfg/lockedfile"
+	"cfg/par"
+	"cfg/str"
 	"context"
 	"errors"
 	"fmt"

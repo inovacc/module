@@ -10,6 +10,10 @@ package modfetch
 
 import (
 	"bytes"
+	"cfg/base"
+	"cfg/cfg"
+	"cfg/lockedfile"
+	"cfg/web"
 	"errors"
 	"fmt"
 	"io"
@@ -20,11 +24,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-
-	"cmd/go/internal/base"
-	"cmd/go/internal/cfg"
-	"cmd/go/internal/lockedfile"
-	"cmd/go/internal/web"
 
 	"golang.org/x/mod/module"
 	"golang.org/x/mod/sumdb"

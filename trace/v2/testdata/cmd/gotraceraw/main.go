@@ -5,6 +5,8 @@
 package main
 
 import (
+	"cfg/trace/v2/raw"
+	"cfg/trace/v2/version"
 	"flag"
 	"fmt"
 	"io"

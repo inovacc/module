@@ -5,6 +5,14 @@
 package modload
 
 import (
+	"cfg/base"
+	"cfg/cfg"
+	"cfg/gover"
+	"cfg/modfetch"
+	"cfg/modfetch/codehost"
+	"cfg/modindex"
+	"cfg/modinfo"
+	"cfg/search"
 	"context"
 	"encoding/hex"
 	"errors"

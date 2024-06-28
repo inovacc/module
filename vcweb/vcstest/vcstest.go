@@ -7,6 +7,8 @@
 package vcstest
 
 import (
+	"cfg/vcweb"
+	"cfg/web"
 	"crypto/tls"
 	"crypto/x509"
 	"encoding/pem"

@@ -94,6 +94,17 @@ package modload
 // if those packages are not found in existing dependencies of the main module.
 
 import (
+	"cfg/base"
+	"cfg/cfg"
+	"cfg/fsys"
+	"cfg/gover"
+	"cfg/imports"
+	"cfg/modfetch"
+	"cfg/modindex"
+	"cfg/mvs"
+	"cfg/par"
+	"cfg/search"
+	"cfg/str"
 	"context"
 	"errors"
 	"fmt"

@@ -5,6 +5,9 @@
 package base
 
 import (
+	"cfg/cfg"
+	"cfg/fsys"
+	"cfg/quoted"
 	"flag"
 	"fmt"
 )

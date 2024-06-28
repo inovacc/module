@@ -10,6 +10,7 @@ package profile
 import (
 	"bufio"
 	"bytes"
+	"cfg/lazyregexp"
 	"fmt"
 	"io"
 	"math"

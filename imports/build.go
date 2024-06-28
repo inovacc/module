@@ -20,6 +20,7 @@ package imports
 
 import (
 	"bytes"
+	"cfg/cfg"
 	"errors"
 	"fmt"
 	"go/build/constraint"

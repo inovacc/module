@@ -6,6 +6,8 @@ package cache
 
 import (
 	"bufio"
+	"cfg/base"
+	"cfg/quoted"
 	"context"
 	"crypto/sha256"
 	"encoding/base64"

@@ -26,6 +26,7 @@
 package traceviewer
 
 import (
+	"cfg/trace"
 	"encoding/json"
 	"fmt"
 	"log"

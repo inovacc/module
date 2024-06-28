@@ -10,6 +10,7 @@ package lockedfile_test
 
 import (
 	"bytes"
+	"cfg/lockedfile"
 	"encoding/binary"
 	"math/rand"
 	"path/filepath"

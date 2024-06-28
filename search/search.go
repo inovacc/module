@@ -5,6 +5,11 @@
 package search
 
 import (
+	"cfg/base"
+	"cfg/cfg"
+	"cfg/fsys"
+	"cfg/pkgpattern"
+	"cfg/str"
 	"fmt"
 	"go/build"
 	"io/fs"

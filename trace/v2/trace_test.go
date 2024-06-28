@@ -7,6 +7,8 @@ package trace_test
 import (
 	"bufio"
 	"bytes"
+	"cfg/trace/v2"
+	"cfg/trace/v2/testtrace"
 	"fmt"
 
 	"io"

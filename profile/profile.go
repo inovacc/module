@@ -9,6 +9,7 @@ package profile
 
 import (
 	"bytes"
+	"cfg/lazyregexp"
 	"compress/gzip"
 	"fmt"
 	"io"

@@ -16,6 +16,9 @@
 package zip_sum_test
 
 import (
+	"cfg/cfg"
+	"cfg/modfetch"
+	"cfg/modload"
 	"context"
 	"crypto/sha256"
 	"encoding/csv"

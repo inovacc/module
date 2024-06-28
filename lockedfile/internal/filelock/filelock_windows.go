@@ -7,8 +7,8 @@
 package filelock
 
 import (
+	"golang.org/x/sys/windows"
 	"io/fs"
-	"syscall"
 )
 
 type lockType uint32
@@ -29,9 +29,9 @@ func lock(f File, lt lockType) error {
 	// However, LockFileEx still requires an OVERLAPPED structure,
 	// which contains the file offset of the beginning of the lock range.
 	// We want to lock the entire file, so we leave the offset as zero.
-	ol := new(syscall.Overlapped)
+	ol := new(windows.Overlapped)
 
-	err := windows.LockFileEx(syscall.Handle(f.Fd()), uint32(lt), reserved, allBytes, allBytes, ol)
+	err := windows.LockFileEx(windows.Handle(f.Fd()), uint32(lt), reserved, allBytes, allBytes, ol)
 	if err != nil {
 		return &fs.PathError{
 			Op:   lt.String(),
@@ -43,8 +43,8 @@ func lock(f File, lt lockType) error {
 }
 
 func unlock(f File) error {
-	ol := new(syscall.Overlapped)
-	err := windows.UnlockFileEx(syscall.Handle(f.Fd()), reserved, allBytes, allBytes, ol)
+	ol := new(windows.Overlapped)
+	err := windows.UnlockFileEx(windows.Handle(f.Fd()), reserved, allBytes, allBytes, ol)
 	if err != nil {
 		return &fs.PathError{
 			Op:   "Unlock",

@@ -5,6 +5,8 @@
 package version
 
 import (
+	"cfg/trace/v2/event"
+	"cfg/trace/v2/event/go122"
 	"fmt"
 	"io"
 )

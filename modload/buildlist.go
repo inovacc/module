@@ -5,6 +5,11 @@
 package modload
 
 import (
+	"cfg/base"
+	"cfg/cfg"
+	"cfg/gover"
+	"cfg/mvs"
+	"cfg/par"
 	"context"
 	"errors"
 	"fmt"

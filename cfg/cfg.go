@@ -8,6 +8,7 @@ package cfg
 
 import (
 	"bytes"
+	"cfg/buildcfg"
 	"cfg/fsys"
 	"context"
 	"fmt"

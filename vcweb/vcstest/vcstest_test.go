@@ -5,6 +5,7 @@
 package vcstest_test
 
 import (
+	"cfg/vcweb"
 	"errors"
 	"flag"
 	"fmt"

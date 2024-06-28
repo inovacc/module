@@ -6,6 +6,14 @@ package modload
 
 import (
 	"bytes"
+	"cfg/base"
+	"cfg/cfg"
+	"cfg/fsys"
+	"cfg/gover"
+	"cfg/lazyregexp"
+	"cfg/lockedfile"
+	"cfg/modfetch"
+	"cfg/search"
 	"context"
 	"encoding/json"
 	"errors"

@@ -5,6 +5,10 @@
 package modfetch
 
 import (
+	"cfg/cfg"
+	"cfg/modfetch/codehost"
+	"cfg/par"
+	"cfg/web"
 	"context"
 	"fmt"
 	"io"
@@ -12,12 +16,6 @@ import (
 	"os"
 	"strconv"
 	"time"
-
-	"cmd/go/internal/cfg"
-	"cmd/go/internal/modfetch/codehost"
-	"cmd/go/internal/par"
-	"cmd/go/internal/vcs"
-	web "cmd/go/internal/web"
 
 	"golang.org/x/mod/module"
 )

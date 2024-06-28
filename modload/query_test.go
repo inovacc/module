@@ -5,6 +5,8 @@
 package modload
 
 import (
+	"cfg/cfg"
+	"cfg/vcweb/vcstest"
 	"context"
 	"flag"
 	"internal/testenv"

@@ -6,8 +6,14 @@ package testkit
 
 import (
 	"bytes"
+	"cfg/trace/v2"
+	"cfg/trace/v2/event"
+	"cfg/trace/v2/event/go122"
+	"cfg/trace/v2/raw"
+	"cfg/trace/v2/version"
 	"encoding/binary"
 	"fmt"
+	"golang.org/x/tools/txtar"
 	"os"
 	"regexp"
 	"strings"

@@ -6,6 +6,7 @@ package mmap
 
 import (
 	"fmt"
+	"golang.org/x/sys/windows"
 	"os"
 	"syscall"
 	"unsafe"

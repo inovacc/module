@@ -6,6 +6,7 @@ package trace
 
 import (
 	"bufio"
+	"cfg/trace/v2/version"
 	"fmt"
 	"io"
 	"slices"

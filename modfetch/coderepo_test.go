@@ -6,6 +6,9 @@ package modfetch
 
 import (
 	"archive/zip"
+	"cfg/cfg"
+	"cfg/modfetch/codehost"
+	"cfg/vcweb/vcstest"
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
@@ -20,10 +23,6 @@ import (
 	"strings"
 	"testing"
 	"time"
-
-	"cmd/go/internal/cfg"
-	"cmd/go/internal/modfetch/codehost"
-	"cmd/go/internal/vcweb/vcstest"
 
 	"golang.org/x/mod/sumdb/dirhash"
 )

@@ -8,6 +8,8 @@ package traceviewer
 
 import (
 	"bufio"
+	"cfg/profile"
+	"cfg/trace"
 	"fmt"
 	"net/http"
 	"os"

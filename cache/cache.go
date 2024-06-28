@@ -7,6 +7,9 @@ package cache
 
 import (
 	"bytes"
+	"cfg/godebug"
+	"cfg/lockedfile"
+	"cfg/mmap"
 	"crypto/sha256"
 	"encoding/hex"
 	"errors"

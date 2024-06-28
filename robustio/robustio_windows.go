@@ -6,6 +6,7 @@ package robustio
 
 import (
 	"errors"
+	"golang.org/x/sys/windows"
 	"syscall"
 )
 

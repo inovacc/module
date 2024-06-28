@@ -5,6 +5,14 @@
 package modload
 
 import (
+	"cfg/base"
+	"cfg/cfg"
+	"cfg/fsys"
+	"cfg/gover"
+	"cfg/lockedfile"
+	"cfg/modfetch"
+	"cfg/par"
+	"cfg/trace"
 	"context"
 	"errors"
 	"fmt"

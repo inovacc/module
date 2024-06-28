@@ -7,6 +7,7 @@
 package fsys
 
 import (
+	"cfg/godebug"
 	"encoding/json"
 	"errors"
 	"fmt"

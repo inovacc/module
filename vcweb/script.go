@@ -7,6 +7,7 @@ package vcweb
 import (
 	"bufio"
 	"bytes"
+	"cfg/script"
 	"context"
 	"errors"
 	"fmt"

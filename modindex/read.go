@@ -6,14 +6,13 @@ package modindex
 
 import (
 	"bytes"
+	"cfg/godebug"
 	"encoding/binary"
 	"errors"
 	"fmt"
 	"go/build"
 	"go/build/constraint"
 	"go/token"
-	"internal/godebug"
-	"internal/goroot"
 	"path"
 	"path/filepath"
 	"runtime"

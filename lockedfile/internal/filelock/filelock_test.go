@@ -7,6 +7,7 @@
 package filelock_test
 
 import (
+	"cfg/lockedfile/internal/filelock"
 	"fmt"
 	"os"
 	"path/filepath"

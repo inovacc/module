@@ -8,6 +8,9 @@
 package trace
 
 import (
+	"cfg/trace/v2/event"
+	"cfg/trace/v2/event/go122"
+	"cfg/trace/v2/version"
 	"fmt"
 	"math"
 	"strings"

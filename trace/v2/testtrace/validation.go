@@ -5,6 +5,7 @@
 package testtrace
 
 import (
+	"cfg/trace/v2"
 	"errors"
 	"fmt"
 	"slices"

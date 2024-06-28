@@ -5,6 +5,7 @@
 package cfg
 
 import (
+	"cfg/par"
 	"os/exec"
 )
 

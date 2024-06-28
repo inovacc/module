@@ -5,6 +5,14 @@
 package modload
 
 import (
+	"cfg/cfg"
+	"cfg/fsys"
+	"cfg/gover"
+	"cfg/modfetch"
+	"cfg/modindex"
+	"cfg/par"
+	"cfg/search"
+	"cfg/str"
 	"context"
 	"errors"
 	"fmt"
