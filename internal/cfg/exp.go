@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package build
+package cfg
 
 import (
 	"fmt"
@@ -27,18 +27,18 @@ type ExperimentFlags struct {
 // experimentBaseline specifies the experiment flags that are enabled by
 // default in the current toolchain. This is, in effect, the "control"
 // configuration and any variation from this is an experiment.
-var Experiment ExperimentFlags = func() ExperimentFlags {
-	flags, err := ParseGOEXPERIMENT(GOOS, GOARCH, envOr("GOEXPERIMENT", defaultGOEXPERIMENT))
-	if err != nil {
-		Error = err
-		return ExperimentFlags{}
-	}
-	return *flags
-}()
+//var Experiment ExperimentFlags = func() ExperimentFlags {
+//	flags, err := ParseGOEXPERIMENT(GOOS, GOARCH, envOr("GOEXPERIMENT", defaultGOEXPERIMENT))
+//	if err != nil {
+//		Error = err
+//		return ExperimentFlags{}
+//	}
+//	return *flags
+//}()
 
 // DefaultGOEXPERIMENT is the embedded default GOEXPERIMENT string.
 // It is not guaranteed to be canonical.
-const DefaultGOEXPERIMENT = defaultGOEXPERIMENT
+//const DefaultGOEXPERIMENT = defaultGOEXPERIMENT
 
 // FramePointerEnabled enables the use of platform conventions for
 // saving frame pointers.

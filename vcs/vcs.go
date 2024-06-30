@@ -13,11 +13,11 @@ import (
 	"github.com/inovacc/module/internal/web"
 	"github.com/inovacc/module/lazyregexp"
 	"github.com/inovacc/module/search"
-	"github.com/inovacc/module/singleflight"
 	"github.com/inovacc/module/str"
+	"golang.org/x/sync/singleflight"
 	"io/fs"
 	"log"
-	urlpkg "net/url"
+	"net/url"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -73,7 +73,7 @@ var (
 
 	// VCSTestIsLocalHost reports whether the given URL refers to a local
 	// (loopback) host, such as "localhost" or "127.0.0.1:8080".
-	VCSTestIsLocalHost func(*urlpkg.URL) bool
+	VCSTestIsLocalHost func(*url.URL) bool
 )
 
 var defaultSecureScheme = map[string]bool{
@@ -85,7 +85,7 @@ var defaultSecureScheme = map[string]bool{
 }
 
 func (v *Cmd) IsSecure(repo string) bool {
-	u, err := urlpkg.Parse(repo)
+	u, err := url.Parse(repo)
 	if err != nil {
 		// If repo is not a URL, it's not secure.
 		return false
@@ -282,7 +282,7 @@ var vcsGit = &Cmd{
 var scpSyntaxRe = lazyregexp.New(`^(\w+)@([\w.-]+):(.*)$`)
 
 func gitRemoteRepo(vcsGit *Cmd, rootDir string) (remoteRepo string, err error) {
-	const cmd = "config remote.origin.url"
+	const cmd = "config remote.origin.u"
 	outb, err := vcsGit.run1(rootDir, cmd, nil, false)
 	if err != nil {
 		// if it doesn't output any message, it means the config argument is correct,
@@ -294,19 +294,19 @@ func gitRemoteRepo(vcsGit *Cmd, rootDir string) (remoteRepo string, err error) {
 	}
 	out := strings.TrimSpace(string(outb))
 
-	var repoURL *urlpkg.URL
+	var repoURL *url.URL
 	if m := scpSyntaxRe.FindStringSubmatch(out); m != nil {
 		// Match SCP-like syntax and convert it to a URL.
 		// Eg, "git@github.com:user/repo" becomes
 		// "ssh://git@github.com/user/repo".
-		repoURL = &urlpkg.URL{
+		repoURL = &url.URL{
 			Scheme: "ssh",
-			User:   urlpkg.User(m[1]),
+			User:   url.User(m[1]),
 			Host:   m[2],
 			Path:   m[3],
 		}
 	} else {
-		repoURL, err = urlpkg.Parse(out)
+		repoURL, err = url.Parse(out)
 		if err != nil {
 			return "", err
 		}
@@ -550,7 +550,7 @@ var vcsFossil = &Cmd{
 }
 
 func fossilRemoteRepo(vcsFossil *Cmd, rootDir string) (remoteRepo string, err error) {
-	out, err := vcsFossil.runOutput(rootDir, "remote-url")
+	out, err := vcsFossil.runOutput(rootDir, "remote-u")
 	if err != nil {
 		return "", err
 	}
@@ -1235,7 +1235,7 @@ func interceptVCSTest(repo string, vcs *Cmd, security web.SecurityMode) (repoURL
 		if vcs == vcsSvn {
 			// Ping the vcweb HTTP server to tell it to initialize the SVN repository
 			// and get the SVN server URL.
-			u, err := urlpkg.Parse(httpURL + "?vcwebsvn=1")
+			u, err := url.Parse(httpURL + "?vcwebsvn=1")
 			if err != nil {
 				panic(fmt.Sprintf("invalid vcs-test repo URL: %v", err))
 			}
@@ -1258,7 +1258,7 @@ func interceptVCSTest(repo string, vcs *Cmd, security web.SecurityMode) (repoURL
 //
 // The URL leaves the Scheme field blank so that web.Get will try any scheme
 // allowed by the selected security mode.
-func urlForImportPath(importPath string) (*urlpkg.URL, error) {
+func urlForImportPath(importPath string) (*url.URL, error) {
 	slash := strings.Index(importPath, "/")
 	if slash < 0 {
 		slash = len(importPath)
@@ -1270,7 +1270,7 @@ func urlForImportPath(importPath string) (*urlpkg.URL, error) {
 	if len(path) == 0 {
 		path = "/"
 	}
-	return &urlpkg.URL{Host: host, Path: path, RawQuery: "go-get=1"}, nil
+	return &url.URL{Host: host, Path: path, RawQuery: "go-get=1"}, nil
 }
 
 // repoRootForImportDynamic finds a *RepoRoot for a custom domain that's not
@@ -1368,7 +1368,7 @@ func repoRootForImportDynamic(importPath string, mod ModuleMode, security web.Se
 // validateRepoRoot returns an error if repoRoot does not seem to be
 // a valid URL with scheme.
 func validateRepoRoot(repoRoot string) error {
-	url, err := urlpkg.Parse(repoRoot)
+	url, err := url.Parse(repoRoot)
 	if err != nil {
 		return err
 	}
@@ -1393,9 +1393,9 @@ var (
 //
 // The importPath is of the form "golang.org/x/tools".
 // It is an error if no imports are found.
-// url will still be valid if err != nil.
-// The returned url will be of the form "https://golang.org/x/tools?go-get=1"
-func metaImportsForPrefix(importPrefix string, mod ModuleMode, security web.SecurityMode) (*urlpkg.URL, []metaImport, error) {
+// u will still be valid if err != nil.
+// The returned u will be of the form "https://golang.org/x/tools?go-get=1"
+func metaImportsForPrefix(importPrefix string, mod ModuleMode, security web.SecurityMode) (*url.URL, []metaImport, error) {
 	setCache := func(res fetchResult) (fetchResult, error) {
 		fetchCacheMu.Lock()
 		defer fetchCacheMu.Unlock()
@@ -1417,7 +1417,7 @@ func metaImportsForPrefix(importPrefix string, mod ModuleMode, security web.Secu
 		}
 		resp, err := web.Get(security, url)
 		if err != nil {
-			return setCache(fetchResult{url: url, err: fmt.Errorf("fetching %s: %v", importPrefix, err)})
+			return setCache(fetchResult{u: url, err: fmt.Errorf("fetching %s: %v", importPrefix, err)})
 		}
 		body := resp.Body
 		defer body.Close()
@@ -1426,23 +1426,23 @@ func metaImportsForPrefix(importPrefix string, mod ModuleMode, security web.Secu
 			if respErr := resp.Err(); respErr != nil {
 				// If the server's status was not OK, prefer to report that instead of
 				// an XML parse error.
-				return setCache(fetchResult{url: url, err: respErr})
+				return setCache(fetchResult{u: url, err: respErr})
 			}
 		}
 		if err != nil {
-			return setCache(fetchResult{url: url, err: fmt.Errorf("parsing %s: %v", resp.URL, err)})
+			return setCache(fetchResult{u: url, err: fmt.Errorf("parsing %s: %v", resp.URL, err)})
 		}
 		if len(imports) == 0 {
 			err = fmt.Errorf("fetching %s: no go-import meta tag found in %s", importPrefix, resp.URL)
 		}
-		return setCache(fetchResult{url: url, imports: imports, err: err})
+		return setCache(fetchResult{u: url, imports: imports, err: err})
 	})
 	res := resi.(fetchResult)
-	return res.url, res.imports, res.err
+	return res.u, res.imports, res.err
 }
 
 type fetchResult struct {
-	url     *urlpkg.URL
+	u       *url.URL
 	imports []metaImport
 	err     error
 }
@@ -1611,12 +1611,12 @@ func launchpadVCS(match map[string]string) error {
 	if match["project"] == "" || match["series"] == "" {
 		return nil
 	}
-	url := &urlpkg.URL{
+	u := &url.URL{
 		Scheme: "https",
 		Host:   "code.launchpad.net",
 		Path:   expand(match, "/{project}{series}/.bzr/branch-format"),
 	}
-	_, err := web.GetBytes(url)
+	_, err := web.GetBytes(u)
 	if err != nil {
 		match["root"] = expand(match, "launchpad.net/{project}")
 		match["repo"] = expand(match, "https://{root}")

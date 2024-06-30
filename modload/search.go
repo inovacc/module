@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"github.com/inovacc/module/fsys"
 	"github.com/inovacc/module/internal/gover"
+	"github.com/inovacc/module/modload/imports"
 
 	"github.com/inovacc/module/internal/cfg"
-	"github.com/inovacc/module/internal/imports"
 	"github.com/inovacc/module/modindex"
 	"github.com/inovacc/module/par"
 	"github.com/inovacc/module/pkgpattern"
@@ -133,7 +133,7 @@ func matchPackages(ctx context.Context, m *search.Match, tags map[string]bool, f
 				have[name] = true
 				if isMatch(name) {
 					q.Add(func() {
-						if _, _, err := scanDir(root, pkgDir, tags); err != imports.ErrNoGo {
+						if _, _, err := scanDir(root, pkgDir, tags); !errors.Is(err, imports.ErrNoGo) {
 							addPkg(name)
 						}
 					})
