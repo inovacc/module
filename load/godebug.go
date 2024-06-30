@@ -5,11 +5,11 @@
 package load
 
 import (
-	"cmd/go/internal/modload"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/godebugs"
+	"github.com/inovacc/module/modload"
 	"go/build"
-	"internal/godebugs"
 	"sort"
 	"strconv"
 	"strings"

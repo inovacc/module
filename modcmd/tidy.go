@@ -7,14 +7,14 @@
 package modcmd
 
 import (
-	"cmd/go/internal/base"
-	"cmd/go/internal/cfg"
-	"cmd/go/internal/gover"
-	"cmd/go/internal/imports"
-	"cmd/go/internal/modload"
-	"cmd/go/internal/toolchain"
 	"context"
 	"fmt"
+	"github.com/inovacc/module/internal/base"
+	"github.com/inovacc/module/internal/cfg"
+	"github.com/inovacc/module/internal/gover"
+	"github.com/inovacc/module/modload"
+	"github.com/inovacc/module/modload/imports"
+	"github.com/inovacc/module/toolchain"
 
 	"golang.org/x/mod/modfile"
 )

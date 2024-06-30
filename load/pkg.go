@@ -12,13 +12,27 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/fsys"
+	"github.com/inovacc/module/internal/base"
+	"github.com/inovacc/module/internal/cfg"
+	"github.com/inovacc/module/internal/gover"
+	"github.com/inovacc/module/internal/platform"
+	"github.com/inovacc/module/modfetch"
+	"github.com/inovacc/module/modindex"
+	"github.com/inovacc/module/modinfo"
+	"github.com/inovacc/module/modload"
+	"github.com/inovacc/module/modload/imports"
+	"github.com/inovacc/module/par"
+	"github.com/inovacc/module/pkgpattern"
+	"github.com/inovacc/module/search"
+	"github.com/inovacc/module/str"
+	"github.com/inovacc/module/trace"
+	"github.com/inovacc/module/vcs"
 	"go/build"
 	"go/scanner"
 	"go/token"
-	"internal/platform"
 	"io/fs"
 	"os"
-	pathpkg "path"
 	"path/filepath"
 	"runtime"
 	"runtime/debug"
@@ -29,22 +43,6 @@ import (
 	"time"
 	"unicode"
 	"unicode/utf8"
-
-	"cmd/go/internal/base"
-	"cmd/go/internal/cfg"
-	"cmd/go/internal/fsys"
-	"cmd/go/internal/gover"
-	"cmd/go/internal/imports"
-	"cmd/go/internal/modfetch"
-	"cmd/go/internal/modindex"
-	"cmd/go/internal/modinfo"
-	"cmd/go/internal/modload"
-	"cmd/go/internal/par"
-	"cmd/go/internal/search"
-	"cmd/go/internal/str"
-	"cmd/go/internal/trace"
-	"cmd/go/internal/vcs"
-	"cmd/internal/pkgpattern"
 
 	"golang.org/x/mod/modfile"
 	"golang.org/x/mod/module"
@@ -657,7 +655,7 @@ func ReloadPackageNoFlags(arg string, stk *ImportStack) *Package {
 // a special case, so that all the code to deal with ordinary imports works
 // automatically.
 func dirToImportPath(dir string) string {
-	return pathpkg.Join("_", strings.Map(makeImportValid, filepath.ToSlash(dir)))
+	return filepath.Join("_", strings.Map(makeImportValid, filepath.ToSlash(dir)))
 }
 
 func makeImportValid(r rune) rune {
@@ -796,7 +794,7 @@ func loadImport(ctx context.Context, opts PackageOpts, pre *preload, path, srcDi
 		if !cfg.ModulesEnabled && path != cleanImport(path) {
 			p.Error = &PackageError{
 				ImportStack: stk.Copy(),
-				Err:         ImportErrorf(path, "non-canonical import path %q: should be %q", path, pathpkg.Clean(path)),
+				Err:         ImportErrorf(path, "non-canonical import path %q: should be %q", path, filepath.Clean(path)),
 			}
 			p.Incomplete = true
 			p.Error.setPos(importPos)
@@ -1140,7 +1138,7 @@ func (pre *preload) flush() {
 
 func cleanImport(path string) string {
 	orig := path
-	path = pathpkg.Clean(path)
+	path = filepath.Clean(path)
 	if strings.HasPrefix(orig, "./") && path != ".." && !strings.HasPrefix(path, "../") {
 		path = "./" + path
 	}
@@ -1723,12 +1721,12 @@ var foldPath = make(map[string]string)
 // a vN path element specifying the major version, then the
 // second last element of the import path is used instead.
 func (p *Package) exeFromImportPath() string {
-	_, elem := pathpkg.Split(p.ImportPath)
+	_, elem := filepath.Split(p.ImportPath)
 	if cfg.ModulesEnabled {
 		// If this is example.com/mycmd/v2, it's more useful to
 		// install it as mycmd than as v2. See golang.org/issue/24667.
 		if elem != p.ImportPath && isVersionElement(elem) {
-			_, elem = pathpkg.Split(pathpkg.Dir(p.ImportPath))
+			_, elem = filepath.Split(filepath.Dir(p.ImportPath))
 		}
 	}
 	return elem
@@ -1999,7 +1997,7 @@ func (p *Package) load(ctx context.Context, opts PackageOpts, path string, stk *
 			return
 		}
 	}
-	if name := pathpkg.Base(p.ImportPath); !SafeArg(name) {
+	if name := filepath.Base(p.ImportPath); !SafeArg(name) {
 		setError(fmt.Errorf("invalid input directory name %q", name))
 		return
 	}
@@ -2129,7 +2127,7 @@ func resolveEmbed(pkgdir string, patterns []string) (files []string, pmap map[st
 			glob = pattern[len("all:"):]
 		}
 		// Check pattern is valid for //go:embed.
-		if _, err := pathpkg.Match(glob, ""); err != nil || !validEmbedPattern(glob) {
+		if _, err := filepath.Match(glob, ""); err != nil || !validEmbedPattern(glob) {
 			return nil, nil, fmt.Errorf("invalid pattern syntax")
 		}
 
@@ -3292,7 +3290,7 @@ func PackagesAndErrorsOutsideModule(ctx context.Context, opts PackageOpts, args 
 			return nil, fmt.Errorf("%s: argument must be a package path, not an absolute path", arg)
 		case search.IsMetaPackage(p):
 			return nil, fmt.Errorf("%s: argument must be a package path, not a meta-package", arg)
-		case pathpkg.Clean(p) != p:
+		case filepath.Clean(p) != p:
 			return nil, fmt.Errorf("%s: argument must be a clean package path", arg)
 		case !strings.Contains(p, "...") && search.IsStandardImportPath(p) && modindex.IsStandardPackage(cfg.GOROOT, cfg.BuildContext.Compiler, p):
 			return nil, fmt.Errorf("%s: argument must not be a package in the standard library", arg)
@@ -3556,7 +3554,7 @@ func DeclareCoverVars(p *Package, files ...string) map[string]*CoverVar {
 		if p.Internal.Local {
 			longFile = filepath.Join(p.Dir, file)
 		} else {
-			longFile = pathpkg.Join(p.ImportPath, file)
+			longFile = filepath.Join(p.ImportPath, file)
 		}
 		coverVars[file] = &CoverVar{
 			File: longFile,

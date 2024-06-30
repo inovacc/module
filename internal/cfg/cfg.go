@@ -39,6 +39,28 @@ const version = `go1.22.4`
 //const defaultGOOS = runtime.GOOS
 //const defaultGOARCH = runtime.GOARCH
 
+const DefaultPkgConfig = `pkg-config`
+
+func DefaultCC(goos, goarch string) string {
+	switch goos + `/` + goarch {
+	}
+	switch goos {
+	case "darwin", "ios", "freebsd", "openbsd":
+		return "clang"
+	}
+	return "gcc"
+}
+
+func DefaultCXX(goos, goarch string) string {
+	switch goos + `/` + goarch {
+	}
+	switch goos {
+	case "darwin", "ios", "freebsd", "openbsd":
+		return "clang++"
+	}
+	return "g++"
+}
+
 var (
 	lookPathCache par.ErrCache[string, string]
 
@@ -886,4 +908,28 @@ func gogoarchTags() []string {
 		return list
 	}
 	return nil
+}
+
+// GetArchEnv returns the name and setting of the
+// GOARCH-specific architecture environment variable.
+// If the current architecture has no GOARCH-specific variable,
+// GetArchEnv returns empty key and value.
+func GetArchEnv() (key, val string) {
+	switch Goarch {
+	case "arm":
+		return "GOARM", envOr("GOARM", fmt.Sprint(GOARM))
+	case "386":
+		return "GO386", GO386
+	case "amd64":
+		return "GOAMD64", envOr("GOAMD64", fmt.Sprintf("%s%d", "v", GOAMD64))
+	case "mips", "mipsle":
+		return "GOMIPS", GOMIPS
+	case "mips64", "mips64le":
+		return "GOMIPS64", GOMIPS64
+	case "ppc64", "ppc64le":
+		return "GOPPC64", envOr("GOPPC64", fmt.Sprintf("%s%d", "power", GOPPC64))
+	case "wasm":
+		return "GOWASM", envOr("GOWASM", fmt.Sprint(GOWASM))
+	}
+	return "", ""
 }

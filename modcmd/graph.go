@@ -11,12 +11,6 @@ import (
 	"context"
 	"os"
 
-	"cmd/go/internal/base"
-	"cmd/go/internal/cfg"
-	"cmd/go/internal/gover"
-	"cmd/go/internal/modload"
-	"cmd/go/internal/toolchain"
-
 	"golang.org/x/mod/module"
 )
 

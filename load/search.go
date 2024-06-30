@@ -5,11 +5,10 @@
 package load
 
 import (
+	"github.com/inovacc/module/pkgpattern"
+	"github.com/inovacc/module/search"
 	"path/filepath"
 	"strings"
-
-	"cmd/go/internal/search"
-	"cmd/internal/pkgpattern"
 )
 
 // MatchPackage(pattern, cwd)(p) reports whether package p matches pattern in the working directory cwd.

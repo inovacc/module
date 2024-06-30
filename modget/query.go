@@ -6,17 +6,16 @@ package modget
 
 import (
 	"fmt"
+	"github.com/inovacc/module/internal/base"
+	"github.com/inovacc/module/internal/gover"
+	"github.com/inovacc/module/modload"
+	"github.com/inovacc/module/pkgpattern"
+	"github.com/inovacc/module/search"
+	"github.com/inovacc/module/str"
 	"path/filepath"
 	"regexp"
 	"strings"
 	"sync"
-
-	"cmd/go/internal/base"
-	"cmd/go/internal/gover"
-	"cmd/go/internal/modload"
-	"cmd/go/internal/search"
-	"cmd/go/internal/str"
-	"cmd/internal/pkgpattern"
 
 	"golang.org/x/mod/module"
 )
