@@ -15,6 +15,7 @@ import (
 	"github.com/inovacc/module/goroot"
 	"github.com/inovacc/module/internal/base"
 	"github.com/inovacc/module/internal/cfg"
+	"github.com/inovacc/module/modload/imports"
 	"github.com/inovacc/module/par"
 	"github.com/inovacc/module/str"
 	"go/build"

@@ -29,6 +29,7 @@ const defaultGOARM = `7`
 const defaultGOMIPS = `hardfloat`
 const defaultGOMIPS64 = `hardfloat`
 const defaultGOPPC64 = `power8`
+const DefaultPkgConfig = `pkg-config`
 
 // const defaultGOEXPERIMENT = “
 // const defaultGO_EXTLINK_ENABLED = “
@@ -38,41 +39,9 @@ const version = `go1.22.4`
 //const defaultGOOS = runtime.GOOS
 //const defaultGOARCH = runtime.GOARCH
 
-var lookPathCache par.ErrCache[string, string]
-
-// LookPath wraps exec.LookPath and caches the result
-// which can be called by multiple Goroutines at the same time.
-func LookPath(file string) (path string, err error) {
-	return lookPathCache.Do(file,
-		func() (string, error) {
-			return exec.LookPath(file)
-		})
-}
-
-const DefaultPkgConfig = `pkg-config`
-
-func DefaultCC(goos, goarch string) string {
-	switch goos + `/` + goarch {
-	}
-	switch goos {
-	case "darwin", "ios", "freebsd", "openbsd":
-		return "clang"
-	}
-	return "gcc"
-}
-
-func DefaultCXX(goos, goarch string) string {
-	switch goos + `/` + goarch {
-	}
-	switch goos {
-	case "darwin", "ios", "freebsd", "openbsd":
-		return "clang++"
-	}
-	return "g++"
-}
-
-// Global build parameters (used during package load)
 var (
+	lookPathCache par.ErrCache[string, string]
+
 	Goos   = envOr("GOOS", build.Default.GOOS)
 	Goarch = envOr("GOARCH", build.Default.GOARCH)
 
@@ -82,36 +51,10 @@ var (
 	// in module-aware mode (as opposed to GOPATH mode).
 	// It is equal to modload.Enabled, but not all packages can import modload.
 	ModulesEnabled bool
-)
 
-func exeSuffix() string {
-	if Goos == "windows" {
-		return ".exe"
-	}
-	return ""
-}
-
-// Configuration for tools installed to GOROOT/bin.
-// Normally these match runtime.GOOS and runtime.GOARCH,
-// but when testing a cross-compiled cmd/go they will
-// indicate the GOOS and GOARCH of the installed cmd/go
-// rather than the test binary.
-var (
 	installedGOOS   string
 	installedGOARCH string
-)
 
-// ToolExeSuffix returns the suffix for executables installed
-// in build.ToolDir.
-func ToolExeSuffix() string {
-	if installedGOOS == "windows" {
-		return ".exe"
-	}
-	return ""
-}
-
-// These are general "build flags" used by build and other commands.
-var (
 	BuildA                 bool     // -a flag
 	BuildBuildmode         string   // -buildmode flag
 	BuildBuildvcs          = "auto" // -buildvcs flag: "true", "false", or "auto"
@@ -152,7 +95,98 @@ var (
 	// GoPathError is set when GOPATH is not set. it contains an
 	// explanation why GOPATH is unset.
 	GoPathError string
+
+	// RawGOEXPERIMENT is the GOEXPERIMENT value set by the user.
+	RawGOEXPERIMENT = envOr("GOEXPERIMENT", ``)
+	// CleanGOEXPERIMENT is the minimal GOEXPERIMENT value needed to reproduce the
+	// experiments enabled by RawGOEXPERIMENT.
+	CleanGOEXPERIMENT = RawGOEXPERIMENT
+
+	Experiment    *ExperimentFlags
+	ExperimentErr error
+
+	//GOROOT string
+
+	// Either empty or produced by filepath.Join(GOROOT, …).
+	GOROOTbin string
+	GOROOTpkg string
+	GOROOTsrc string
+
+	GOROOT_FINAL string
+
+	GOBIN      = Getenv("GOBIN")
+	GOMODCACHE = envOr("GOMODCACHE", gopathDir("pkg/mod"))
+
+	// Used in envcmd.MkEnv and build ID computations.
+	//GOARM    = envOr("GOARM", fmt.Sprint(GOARM))
+	//GO386    = envOr("GO386", GO386)
+	//GOAMD64  = envOr("GOAMD64", fmt.Sprintf("%s%d", "v", GOAMD64))
+	//GOMIPS   = envOr("GOMIPS", GOMIPS)
+	//GOMIPS64 = envOr("GOMIPS64", GOMIPS64)
+	//GOPPC64  = envOr("GOPPC64", fmt.Sprintf("%s%d", "power", GOPPC64))
+	//GOWASM   = envOr("GOWASM", fmt.Sprint(GOWASM))
+
+	GOPROXY    = envOr("GOPROXY", "")
+	GOSUMDB    = envOr("GOSUMDB", "")
+	GOPRIVATE  = Getenv("GOPRIVATE")
+	GONOPROXY  = envOr("GONOPROXY", GOPRIVATE)
+	GONOSUMDB  = envOr("GONOSUMDB", GOPRIVATE)
+	GOINSECURE = Getenv("GOINSECURE")
+	GOVCS      = Getenv("GOVCS")
+
+	SumdbDir = gopathDir("pkg/sumdb")
+
+	GOROOT   = runtime.GOROOT() // cached for efficiency
+	GOARCH   = envOr("GOARCH", runtime.GOARCH)
+	GOOS     = envOr("GOOS", runtime.GOOS)
+	GO386    = envOr("GO386", defaultGO386)
+	GOAMD64  = goamd64()
+	GOARM    = goarm()
+	GOMIPS   = gomips()
+	GOMIPS64 = gomips64()
+	GOPPC64  = goppc64()
+	GOWASM   = gowasm()
+	//ToolTags = toolTags()
+	//GO_LDSO  = defaultGO_LDSO
+	Version = version
+
+	Error error
 )
+
+// LookPath wraps exec.LookPath and caches the result
+// which can be called by multiple Goroutines at the same time.
+func LookPath(file string) (path string, err error) {
+	return lookPathCache.Do(file,
+		func() (string, error) {
+			return exec.LookPath(file)
+		})
+}
+
+func DefaultCC(goos, goarch string) string {
+	switch goos + `/` + goarch {
+	}
+	switch goos {
+	case "darwin", "ios", "freebsd", "openbsd":
+		return "clang"
+	}
+	return "gcc"
+}
+
+func exeSuffix() string {
+	if Goos == "windows" {
+		return ".exe"
+	}
+	return ""
+}
+
+// ToolExeSuffix returns the suffix for executables installed
+// in build.ToolDir.
+func ToolExeSuffix() string {
+	if installedGOOS == "windows" {
+		return ".exe"
+	}
+	return ""
+}
 
 func defaultContext() build.Context {
 	ctxt := build.Default
@@ -282,18 +316,6 @@ func SetGOROOT(goroot string, isTestGo bool) {
 		}
 	}
 }
-
-// Experiment configuration.
-var (
-	// RawGOEXPERIMENT is the GOEXPERIMENT value set by the user.
-	RawGOEXPERIMENT = envOr("GOEXPERIMENT", ``)
-	// CleanGOEXPERIMENT is the minimal GOEXPERIMENT value needed to reproduce the
-	// experiments enabled by RawGOEXPERIMENT.
-	CleanGOEXPERIMENT = RawGOEXPERIMENT
-
-	Experiment    *ExperimentFlags
-	ExperimentErr error
-)
 
 func init() {
 	Experiment, ExperimentErr = ParseGOEXPERIMENT(Goos, Goarch, RawGOEXPERIMENT)
@@ -442,62 +464,29 @@ func CanGetenv(key string) bool {
 	return strings.Contains(KnownEnv, "\t"+key+"\n")
 }
 
-var (
-	//GOROOT string
-
-	// Either empty or produced by filepath.Join(GOROOT, …).
-	GOROOTbin string
-	GOROOTpkg string
-	GOROOTsrc string
-
-	GOROOT_FINAL string
-
-	GOBIN      = Getenv("GOBIN")
-	GOMODCACHE = envOr("GOMODCACHE", gopathDir("pkg/mod"))
-
-	// Used in envcmd.MkEnv and build ID computations.
-	GOARM    = envOr("GOARM", fmt.Sprint(GOARM))
-	GO386    = envOr("GO386", GO386)
-	GOAMD64  = envOr("GOAMD64", fmt.Sprintf("%s%d", "v", GOAMD64))
-	GOMIPS   = envOr("GOMIPS", GOMIPS)
-	GOMIPS64 = envOr("GOMIPS64", GOMIPS64)
-	GOPPC64  = envOr("GOPPC64", fmt.Sprintf("%s%d", "power", GOPPC64))
-	GOWASM   = envOr("GOWASM", fmt.Sprint(GOWASM))
-
-	GOPROXY    = envOr("GOPROXY", "")
-	GOSUMDB    = envOr("GOSUMDB", "")
-	GOPRIVATE  = Getenv("GOPRIVATE")
-	GONOPROXY  = envOr("GONOPROXY", GOPRIVATE)
-	GONOSUMDB  = envOr("GONOSUMDB", GOPRIVATE)
-	GOINSECURE = Getenv("GOINSECURE")
-	GOVCS      = Getenv("GOVCS")
-)
-
-var SumdbDir = gopathDir("pkg/sumdb")
-
 // GetArchEnv returns the name and setting of the
 // GOARCH-specific architecture environment variable.
 // If the current architecture has no GOARCH-specific variable,
 // GetArchEnv returns empty key and value.
-func GetArchEnv() (key, val string) {
-	switch Goarch {
-	case "arm":
-		return "GOARM", GOARM
-	case "386":
-		return "GO386", GO386
-	case "amd64":
-		return "GOAMD64", GOAMD64
-	case "mips", "mipsle":
-		return "GOMIPS", GOMIPS
-	case "mips64", "mips64le":
-		return "GOMIPS64", GOMIPS64
-	case "ppc64", "ppc64le":
-		return "GOPPC64", GOPPC64
-	case "wasm":
-		return "GOWASM", GOWASM
-	}
-	return "", ""
-}
+//func GetArchEnv() (key, val string) {
+//	switch Goarch {
+//	case "arm":
+//		return "GOARM", GOARM
+//	case "386":
+//		return "GO386", GO386
+//	case "amd64":
+//		return "GOAMD64", GOAMD64
+//	case "mips", "mipsle":
+//		return "GOMIPS", GOMIPS
+//	case "mips64", "mips64le":
+//		return "GOMIPS64", GOMIPS64
+//	case "ppc64", "ppc64le":
+//		return "GOPPC64", GOPPC64
+//	case "wasm":
+//		return "GOWASM", GOWASM
+//	}
+//	return "", ""
+//}
 
 //// envOr returns Getenv(key) if set, or else def.
 //func envOr(key, def string) string {
@@ -665,25 +654,6 @@ func BuildXWriter(ctx context.Context) (io.Writer, bool) {
 	return os.Stderr, true
 }
 
-var (
-	GOROOT   = runtime.GOROOT() // cached for efficiency
-	GOARCH   = envOr("GOARCH", runtime.GOARCH)
-	GOOS     = envOr("GOOS", runtime.GOOS)
-	GO386    = envOr("GO386", defaultGO386)
-	GOAMD64  = goamd64()
-	GOARM    = goarm()
-	GOMIPS   = gomips()
-	GOMIPS64 = gomips64()
-	GOPPC64  = goppc64()
-	GOWASM   = gowasm()
-	//ToolTags = toolTags()
-	//GO_LDSO  = defaultGO_LDSO
-	Version = version
-)
-
-// Error is one of the errors found (if any) in the build configuration.
-var Error error
-
 // Check exits the program with a fatal error if Error is non-nil.
 func Check() {
 	if Error != nil {
@@ -838,11 +808,11 @@ func gowasm() (f gowasmFeatures) {
 //	return envOr("GO_EXTLINK_ENABLED", defaultGO_EXTLINK_ENABLED)
 //}
 
-func toolTags() []string {
-	tags := experimentTags()
-	tags = append(tags, gogoarchTags()...)
-	return tags
-}
+//func toolTags() []string {
+//	tags := experimentTags()
+//	tags = append(tags, gogoarchTags()...)
+//	return tags
+//}
 
 func experimentTags() []string {
 	var list []string
