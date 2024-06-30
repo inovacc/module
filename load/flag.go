@@ -5,9 +5,9 @@
 package load
 
 import (
-	"cmd/go/internal/base"
-	"cmd/internal/quoted"
 	"fmt"
+	"github.com/inovacc/module/internal/base"
+	"github.com/inovacc/module/quoted"
 	"strings"
 )
 
@@ -86,7 +86,7 @@ func (f *PerPackageFlag) Present() bool {
 
 // For returns the flags to use for the given package.
 func (f *PerPackageFlag) For(p *Package) []string {
-	flags := []string{}
+	var flags []string
 	for _, v := range f.values {
 		if v.match(p) {
 			flags = v.flags

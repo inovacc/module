@@ -3,7 +3,6 @@
 // license that can be found in the LICENSE file.
 
 //go:build !plan9
-// +build !plan9
 
 // The getgo command installs Go to the user's system.
 package main
@@ -42,7 +41,7 @@ func main() {
 
 	runStep := func(s step) {
 		err := s(ctx)
-		if err == errExitCleanly {
+		if errors.Is(err, errExitCleanly) {
 			os.Exit(0)
 		}
 		if err != nil {

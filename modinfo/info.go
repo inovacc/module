@@ -7,6 +7,7 @@ package modinfo
 import (
 	"encoding/json"
 	"github.com/inovacc/module/modfetch/codehost"
+	"strings"
 	"time"
 )
 
@@ -51,7 +52,8 @@ func (e *ModuleError) UnmarshalJSON(data []byte) error {
 }
 
 func (m *ModulePublic) String() string {
-	s := m.Path
+	sb := strings.Builder{}
+	sb.WriteString(m.Path)
 	versionString := func(mm *ModulePublic) string {
 		v := mm.Version
 		if len(mm.Retracted) == 0 {
@@ -61,25 +63,32 @@ func (m *ModulePublic) String() string {
 	}
 
 	if m.Version != "" {
-		s += " " + versionString(m)
+		sb.WriteString(" ")
+		sb.WriteString(versionString(m))
 		if m.Update != nil {
-			s += " [" + versionString(m.Update) + "]"
+			sb.WriteString(" [")
+			sb.WriteString(versionString(m.Update))
+			sb.WriteString("]")
 		}
 	}
 	if m.Deprecated != "" {
-		s += " (deprecated)"
+		sb.WriteString(" (deprecated)")
 	}
 	if m.Replace != nil {
-		s += " => " + m.Replace.Path
+		sb.WriteString(" => ")
+		sb.WriteString(m.Replace.Path)
 		if m.Replace.Version != "" {
-			s += " " + versionString(m.Replace)
+			sb.WriteString(" ")
+			sb.WriteString(versionString(m.Replace))
 			if m.Replace.Update != nil {
-				s += " [" + versionString(m.Replace.Update) + "]"
+				sb.WriteString(" [")
+				sb.WriteString(versionString(m.Replace.Update))
+				sb.WriteString("]")
 			}
 		}
 		if m.Replace.Deprecated != "" {
-			s += " (deprecated)"
+			sb.WriteString(" (deprecated)")
 		}
 	}
-	return s
+	return sb.String()
 }

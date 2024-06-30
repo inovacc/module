@@ -9,16 +9,16 @@ package main
 import (
 	"bytes"
 	"context"
-	exec "golang.org/x/sys/execabs"
+	"golang.org/x/sys/execabs"
 	"runtime"
 	"strings"
 )
 
 // arch contains either amd64 or 386.
 var arch = func() string {
-	cmd := exec.Command("uname", "-m") // "x86_64"
+	cmd := execabs.Command("uname", "-m") // "x86_64"
 	if runtime.GOOS == "windows" {
-		cmd = exec.Command("powershell", "-command", "(Get-WmiObject -Class Win32_ComputerSystem).SystemType") // "x64-based PC"
+		cmd = execabs.Command("powershell", "-command", "(Get-WmiObject -Class Win32_ComputerSystem).SystemType") // "x64-based PC"
 	}
 
 	out, err := cmd.Output()
@@ -33,6 +33,6 @@ var arch = func() string {
 }()
 
 func findGo(ctx context.Context, cmd string) (string, error) {
-	out, err := exec.CommandContext(ctx, cmd, "go").CombinedOutput()
+	out, err := execabs.CommandContext(ctx, cmd, "go").CombinedOutput()
 	return strings.TrimSpace(string(out)), err
 }

@@ -14,7 +14,6 @@ import (
 	"io/fs"
 	"log"
 	"os"
-	pathpkg "path"
 	"path/filepath"
 	"runtime"
 	"runtime/debug"
@@ -37,7 +36,7 @@ func Trace(op, path string) {
 	defer traceMu.Unlock()
 	fmt.Fprintf(traceFile, "%d gofsystrace %s %s\n", os.Getpid(), op, path)
 	if pattern := gofsystracestack.Value(); pattern != "" {
-		if match, _ := pathpkg.Match(pattern, path); match {
+		if match, _ := filepath.Match(pattern, path); match {
 			traceFile.Write(debug.Stack())
 		}
 	}

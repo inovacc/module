@@ -9,23 +9,22 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/fsys"
+	"github.com/inovacc/module/internal/cfg"
+	"github.com/inovacc/module/internal/lazytemplate"
+	"github.com/inovacc/module/str"
+	"github.com/inovacc/module/trace"
 	"go/ast"
 	"go/build"
 	"go/doc"
 	"go/parser"
 	"go/token"
-	"internal/lazytemplate"
 	"path/filepath"
 	"slices"
 	"sort"
 	"strings"
 	"unicode"
 	"unicode/utf8"
-
-	"cmd/go/internal/cfg"
-	"cmd/go/internal/fsys"
-	"cmd/go/internal/str"
-	"cmd/go/internal/trace"
 )
 
 var TestMainDeps = []string{

@@ -7,11 +7,10 @@ package modcmd
 import (
 	"context"
 	"fmt"
+	"github.com/inovacc/module/internal/base"
+	"github.com/inovacc/module/modload"
+	"github.com/inovacc/module/modload/imports"
 	"strings"
-
-	"cmd/go/internal/base"
-	"cmd/go/internal/imports"
-	"cmd/go/internal/modload"
 )
 
 var cmdWhy = &base.Command{

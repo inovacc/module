@@ -73,7 +73,7 @@ type Cache interface {
 	FuzzDir() string
 }
 
-// A Cache is a package cache, backed by a file system directory tree.
+// A DiskCache is a package cache, backed by a file system directory tree.
 type DiskCache struct {
 	dir string
 	now func() time.Time

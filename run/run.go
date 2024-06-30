@@ -7,17 +7,16 @@ package run
 
 import (
 	"context"
+	"github.com/inovacc/module/internal/base"
+	"github.com/inovacc/module/internal/cfg"
+	"github.com/inovacc/module/load"
+	"github.com/inovacc/module/modload"
+	"github.com/inovacc/module/str"
+	"github.com/inovacc/module/work"
 	"go/build"
 	"path"
 	"path/filepath"
 	"strings"
-
-	"cmd/go/internal/base"
-	"cmd/go/internal/cfg"
-	"cmd/go/internal/load"
-	"cmd/go/internal/modload"
-	"cmd/go/internal/str"
-	"cmd/go/internal/work"
 )
 
 var CmdRun = &base.Command{

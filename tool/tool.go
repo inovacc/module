@@ -10,16 +10,15 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/inovacc/module/internal/base"
+	"github.com/inovacc/module/internal/cfg"
+	"github.com/inovacc/module/internal/platform"
 	"go/build"
-	"internal/platform"
 	"os"
 	"os/exec"
 	"os/signal"
 	"sort"
 	"strings"
-
-	"cmd/go/internal/base"
-	"cmd/go/internal/cfg"
 )
 
 var CmdTool = &base.Command{

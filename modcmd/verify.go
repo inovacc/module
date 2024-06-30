@@ -9,14 +9,13 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/inovacc/module/internal/base"
+	"github.com/inovacc/module/internal/gover"
+	"github.com/inovacc/module/modfetch"
+	"github.com/inovacc/module/modload"
 	"io/fs"
 	"os"
 	"runtime"
-
-	"cmd/go/internal/base"
-	"cmd/go/internal/gover"
-	"cmd/go/internal/modfetch"
-	"cmd/go/internal/modload"
 
 	"golang.org/x/mod/module"
 	"golang.org/x/mod/sumdb/dirhash"

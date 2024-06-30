@@ -7,9 +7,9 @@
 package modcmd
 
 import (
-	"cmd/go/internal/base"
-	"cmd/go/internal/modload"
 	"context"
+	"github.com/inovacc/module/internal/base"
+	"github.com/inovacc/module/modload"
 )
 
 var cmdInit = &base.Command{
