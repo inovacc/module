@@ -39,8 +39,6 @@ const version = `go1.22.4`
 //const defaultGOOS = runtime.GOOS
 //const defaultGOARCH = runtime.GOARCH
 
-const DefaultPkgConfig = `pkg-config`
-
 func DefaultCC(goos, goarch string) string {
 	switch goos + `/` + goarch {
 	}
@@ -182,16 +180,6 @@ func LookPath(file string) (path string, err error) {
 		func() (string, error) {
 			return exec.LookPath(file)
 		})
-}
-
-func DefaultCC(goos, goarch string) string {
-	switch goos + `/` + goarch {
-	}
-	switch goos {
-	case "darwin", "ios", "freebsd", "openbsd":
-		return "clang"
-	}
-	return "gcc"
 }
 
 func exeSuffix() string {
